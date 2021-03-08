@@ -1,0 +1,1 @@
+bot: python ./frostbot/bot.py
