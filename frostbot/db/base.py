@@ -11,5 +11,9 @@ class BaseDBWrapper(ABC):
 
     @classmethod
     @abstractmethod
-    async def create(cls):
+    async def connect(cls):
+        pass
+
+    @abstractmethod
+    async def create_table(self):
         pass

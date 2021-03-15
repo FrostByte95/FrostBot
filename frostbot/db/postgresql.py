@@ -10,5 +10,5 @@ from base import BaseDBWrapper
 
 class DBWrapper(BaseDBWrapper):
     @classmethod
-    async def create(cls):
+    async def connect(cls):
         return cls()

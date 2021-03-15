@@ -26,7 +26,7 @@ class FrostBot(commands.Bot):
         # running
         self.pool = await asyncpg.create_pool(os.getenv("DATABASE_URL"), max_size=18, ssl=ssl_certs)
 
-        self.DBWrapper = await DBWrapper.create()
+        self.DBWrapper = await DBWrapper.connect()
 
         await super().start(*args, **kwargs)
 
