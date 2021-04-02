@@ -40,3 +40,8 @@ Songs
 id PK int
 title string
 location string UNIQUE #yt link or local file.
+
+Songs_to_Playlist
+----
+song PK int FK - Songs.id
+playlist PK in FK - Playlist.id
