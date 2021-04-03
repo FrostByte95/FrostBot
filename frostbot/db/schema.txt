@@ -14,7 +14,17 @@ channel_id int UNIQUE
 guild_id int FK >- Guilds.id
 name string
 is_voice bool
-msg_limit int=100
+msg_limit int NULL #messages the bot can send to the channel per command
+
+Guild_Config # bot configuration per guild
+----
+id PK int
+guild int UNIQUE FK - Guilds.id
+msg_limit int=100 #default message limit for new channels
+# notification channels
+general int FK - Channels.id # general bot message notification sent here
+admin int fk - Channels.id # bot messages for admins only
+steam in fk - Channels.id # Send steam sale alerts
 
 Steam
 ----
@@ -22,7 +32,7 @@ id PK int
 user_id int UNIQUE #discord user id
 steam64_id int UNIQUE
 steam_vanity string NULL
-notify_channel int FK - Channels.id
+notify bool=false #PM user wishlist sales
 
 Music
 ----
