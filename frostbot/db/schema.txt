@@ -3,29 +3,32 @@ Copy and paste into QDBD for diagram https://app.quickdatabasediagrams.com/#/
 
 Guilds
 ----
-guild_id PK int
+id PK in
+guild_id int UNIQUE
 name string
 
 Channels
 ----
-channel_id PK int
-guild_id int FK >- Guilds.guild_id
+id PK in
+channel_id int UNIQUE
+guild_id int FK >- Guilds.id
 name string
 is_voice bool
 msg_limit int=100
 
 Steam
 ----
-user_id PK int #discord user id
+id PK int
+user_id int UNIQUE #discord user id
 steam64_id int UNIQUE
 steam_vanity string NULL
-notify_channel int FK - Channels.channel_id
+notify_channel int FK - Channels.id
 
 Music
 ----
 id PK int
 guild int UNIQUE FK - Guilds.guild_id #Cnnected guild that has enrolled in music
-channel int FK - Channels.channel_id #Voice channel we connect to in the guild
+channel int FK - Channels.id #Voice channel we connect to in the guild
 
 Playlist
 ----
@@ -44,4 +47,5 @@ location string UNIQUE #yt link or local file.
 Songs_to_Playlist
 ----
 song PK int FK - Songs.id
-playlist PK in FK - Playlist.id
+playlist PK int FK - Playlist.id
+id int UNIQUE AUTOINCREMENT
