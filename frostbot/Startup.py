@@ -43,11 +43,6 @@ class GeneralCommands(commands.Cog, name='General', description='General Bot com
         print(ctx.author)
         print("-----END-----")
 
-    @commands.command()
-    @commands.is_owner()
-    async def test_responses(self, ctx, index: int):
-        await ctx.send(self.responses[index])
-
 
 def setup(bot):
     print('loading extensions')
