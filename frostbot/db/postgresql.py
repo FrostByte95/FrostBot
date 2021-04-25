@@ -21,20 +21,3 @@ class DBWrapper(BaseDBWrapper):
         """
         pass
 
-    async def insert(self, table: str, values: tuple):
-        """
-        Inserts row into table.
-        :param table: table to insert into.
-        :param values: tuple of values to insert
-        """
-        pass
-
-    async def update(self, table: str, values: dict, condition: str = None):
-        """
-        Update rows in table based on condition
-
-        """
-        pass
-
-    async def delete(self, table: str, condition: str = None):
-        pass

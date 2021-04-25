@@ -3,7 +3,7 @@ Copy and paste into QDBD for diagram https://app.quickdatabasediagrams.com/#/
 
 Guilds
 ----
-id PK in
+id PK int
 guild_id int UNIQUE
 name string
 
@@ -21,32 +21,49 @@ Guild_Config # bot configuration per guild
 id PK int
 guild int UNIQUE FK - Guilds.id
 msg_limit int=100 #default message limit for new channels
-# notification channels
-general int FK - Channels.id # general bot message notification sent here
-admin int fk - Channels.id # bot messages for admins only
-steam in fk - Channels.id # Send steam sale alerts
+# notification channels - If Null notification is turned off
+general int NULL FK - Channels.id # general bot message notification sent here
+admin int NULL FK - Channels.id # bot messages for admins only
+steam int NULL FK - Channels.id # Send steam sale alerts
+
+Users
+----
+id PK int
+user_id int UNIQUE
+name string
+
+User_to_Guild
+----
+user PK int FK - Users.id
+guild PK int FK - Guilds.id
+id int UNIQUE AUTOINCREMENT
 
 Steam
 ----
 id PK int
-user_id int UNIQUE #discord user id
+user_id int FK - Users.id #discord user id
 steam64_id int UNIQUE
 steam_vanity string NULL
 notify bool=false #PM user wishlist sales
 
-Music
+Music # Guilds enrolled in Music player and channel to connect to
 ----
 id PK int
-guild int UNIQUE FK - Guilds.guild_id #Cnnected guild that has enrolled in music
+guild int UNIQUE FK - Guilds.id #Connected guild that has enrolled in music
 channel int FK - Channels.id #Voice channel we connect to in the guild
 
-Playlist
+Playlists
 ----
 id PK int
 name string UNIQUE
-created_by int #discord user id.
+created_by int FK - Users.id #discord user id.
 created_in int FK - Music.id
-allowed_in int FK -< Music.id #guild admin can block playlist but playlist stays with user
+
+blocked_playlists
+----
+playlist PK int FK - Playlists.id
+music PK int FK - Music.id
+id int UNIQUE AUTOINCREMENT
 
 Songs
 ----
@@ -54,8 +71,8 @@ id PK int
 title string
 location string UNIQUE #yt link or local file.
 
-Songs_to_Playlist
+Song_to_Playlist
 ----
 song PK int FK - Songs.id
-playlist PK int FK - Playlist.id
+playlist PK int FK - Playlists.id
 id int UNIQUE AUTOINCREMENT
