@@ -15,6 +15,7 @@ guild_id int FK >- Guilds.id
 name string
 is_voice bool
 msg_limit int NULL #messages the bot can send to the channel per command
+created_by_bot bool
 
 Guild_Config # bot configuration per guild
 ----
@@ -46,7 +47,7 @@ steam64_id int UNIQUE
 steam_vanity string NULL
 notify bool=false #PM user wishlist sales
 
-Music # Guilds enrolled in Music player and channel to connect to
+Music Player # Guilds enrolled in Music player and channel to connect to
 ----
 id PK int
 guild int UNIQUE FK - Guilds.id #Connected guild that has enrolled in music

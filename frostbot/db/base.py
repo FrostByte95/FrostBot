@@ -203,33 +203,57 @@ class BaseDBWrapper(ABC):
         pass
 
     # TODO: Below this line is unfinished
-    # Music
+    # Music Player
     @abstractmethod
-    async def add_Music(self):
-        """Add _ to DB"""
+    async def add_music_player(self):
+        """Add music_player to DB"""
         pass
 
     @abstractmethod
-    async def get_Music_list(self):
-        """returns list of _ in DB"""
+    async def get_music_player_list(self):
+        """returns list of music_player in DB"""
         pass
 
     @abstractmethod
-    async def get_(self):
-        """returns a _ based on their ID"""
+    async def get_music_player(self):
+        """returns a music_player based on its ID"""
         pass
 
     @abstractmethod
-    async def update_(self):
-        """Update _ in DB"""
+    async def update_music_player(self):
+        """Update music_player in DB"""
         pass
 
     @abstractmethod
-    async def remove_(self):
-        """Remove _ from DB"""
+    async def remove_music_player(self):
+        """Remove music_player from DB"""
         pass
 
-    # Playlists
+    # Playlist
+    @abstractmethod
+    async def add_playlist(self):
+        """Add playlist to DB"""
+        pass
+
+    @abstractmethod
+    async def get_playlist_list(self):
+        """returns list of playlists in DB"""
+        pass
+
+    @abstractmethod
+    async def get_playlist(self):
+        """returns a playlist based on its ID"""
+        pass
+
+    @abstractmethod
+    async def update_playlist(self):
+        """Update playlist in DB"""
+        pass
+
+    @abstractmethod
+    async def remove_playlist(self):
+        """Remove playlist from DB"""
+        pass
 
     # TODO: Remove below when done
     @abstractmethod
