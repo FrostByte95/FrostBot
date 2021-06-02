@@ -16,6 +16,6 @@ requests==2.25.1
 six==1.15.0
 steam==1.2.0
 typing-extensions==3.7.4.3
-urllib3==1.26.4
+urllib3==1.26.5
 vdf==3.3
 yarl==1.6.3
